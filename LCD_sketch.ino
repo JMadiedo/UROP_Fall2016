@@ -24,7 +24,7 @@ void loop()
 {
   //This line checked that communication between the arduino 
   //and the pi was working correctly
-  Serial.println("Hello Pi");
+  //Serial.println("Hello Pi");
   if (Serial.available())
   {
      LCD(Serial.readString());
