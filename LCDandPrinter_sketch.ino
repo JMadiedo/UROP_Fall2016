@@ -56,7 +56,7 @@ void LCD(String n)
 
 void Printer(String n)
 {
-  printer.println(F("Inverse ON"));
+  printer.println(n);
 
   printer.sleep();      // Tell printer to sleep
   delay(3000L);         // Sleep for 3 seconds
