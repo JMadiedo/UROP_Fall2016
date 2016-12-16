@@ -24,20 +24,18 @@ Adafruit_Thermal printer(&mySerial);
 LiquidCrystal_I2C lcd(I2C_ADDR,En_pin,Rw_pin,Rs_pin,D4_pin,D5_pin,D6_pin,D7_pin);
 
 void setup()
-{
+{  
+  printer.begin()
   lcd.begin (20,4,LCD_5x8DOTS);
   lcd.setBacklightPin(BACKLIGHT_PIN,POSITIVE);
   Serial.begin(9600);
-  
-  mySerial.begin(9600);  // Initialize SoftwareSerial
-  printer.begin(); 
 }
 
 void loop()
 {
   //This line checked that communication between the arduino 
   //and the pi was working correctly
-  Serial.println("Hello Pi");
+  //Serial.println("Hello Pi");
   if (Serial.available())
   {
      LCD(Serial.readString());
@@ -56,14 +54,10 @@ void LCD(String n)
 
 void Printer(String n)
 {
-  printer.println(F("Inverse ON"));
+  printer.println(n)
 
   printer.sleep();      // Tell printer to sleep
   delay(3000L);         // Sleep for 3 seconds
   printer.wake();       // MUST wake() before printing again, even if reset
   printer.setDefault(); // Restore printer to defaults 
 }
-
-
-
-
