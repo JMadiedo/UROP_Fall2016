@@ -11,7 +11,9 @@ if __name__ == '__main__':
 
     def air_temp_callback(temp):
         pub.publish('Air Temp: {}'.format(temp))
-
+        #level = "normal" if (ph>6.0 and ph<7.5) else "abnormal"
+        #pub.publiser("pH: {}".format(ph), "level: {}".format(level))
+        
     sub_name = "/{}/measured/air_temperature".format(environment_id)
     sub = rospy.Subscriber(sub_name, Float64, air_temp_callback)
 
